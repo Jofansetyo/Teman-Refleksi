@@ -118,7 +118,7 @@ class ExampleTest extends TestCase
         $this->assertSame('tinggi', PssScorer::kategori(27)['kunci']);
     }
 
-    public function test_result_page_is_available_for_a_submission(): void
+    public function test_result_page_requires_session_binding(): void
     {
         $submission = Submission::create([
             'uuid' => 'b608cc87-157e-4ee8-8ba2-95f8e647f95c',
@@ -127,7 +127,14 @@ class ExampleTest extends TestCase
             'consent' => true,
         ]);
 
-        $this->get(route('hasil', $submission))->assertOk()->assertSee('Hasil refleksimu');
+        // Accessing result without session binding should fail.
+        $this->get(route('hasil', $submission))->assertForbidden();
+
+        // Accessing result with correct session binding should succeed.
+        $this->withSession(['tes_hasil_uuid' => $submission->uuid])
+            ->get(route('hasil', $submission))
+            ->assertOk()
+            ->assertSee('Hasil refleksimu');
     }
 
     public function test_submission_rate_limit_allows_only_five_requests_per_minute(): void

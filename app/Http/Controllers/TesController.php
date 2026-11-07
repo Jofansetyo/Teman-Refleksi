@@ -80,11 +80,19 @@ class TesController extends Controller
             return $s;
         });
 
+        // Bind result UUID to session for one-time access.
+        $request->session()->put('tes_hasil_uuid', $submission->uuid);
+
         return redirect()->route('hasil', $submission->uuid);
     }
 
-    public function hasil(Submission $submission)
+    public function hasil(Request $request, Submission $submission)
     {
+        // Verify result access is bound to the current session.
+        if ($request->session()->pull('tes_hasil_uuid') !== $submission->uuid) {
+            abort(403, 'Akses hasil tes ditolak.');
+        }
+
         $info = PssScorer::kategori($submission->skor);
 
         return view('hasil', ['skor' => $submission->skor, 'info' => $info]);

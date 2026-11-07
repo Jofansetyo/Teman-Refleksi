@@ -11,16 +11,16 @@ class QuestionSeeder extends Seeder
     {
         // Pertanyaan refleksi, bukan adaptasi atau instrumen PSS-10 tervalidasi.
         $item = [
-            ['kesal karena sesuatu yang terjadi tak terduga', 0],
-            ['tidak bisa mengendalikan hal-hal penting dalam hidupmu', 0],
-            ['gelisah dan tertekan', 0],
-            ['yakin mampu menangani masalah pribadimu', 1],
-            ['segala sesuatu berjalan sesuai keinginanmu', 1],
-            ['tidak sanggup menyelesaikan semua hal yang harus dikerjakan', 0],
-            ['mampu mengendalikan rasa kesalmu', 1],
-            ['berada di atas segala urusanmu', 1],
-            ['marah karena hal-hal di luar kendalimu', 0],
-            ['masalah menumpuk begitu tinggi sampai tak bisa diatasi', 0],
+            ['Seberapa sering kamu merasa kesal karena sesuatu yang terjadi tak terduga?', 0],
+            ['Seberapa sering kamu merasa tidak bisa mengendalikan hal-hal penting dalam hidupmu?', 0],
+            ['Seberapa sering kamu merasa gelisah dan tertekan?', 0],
+            ['Seberapa sering kamu merasa yakin mampu menangani masalah pribadimu?', 1],
+            ['Seberapa sering kamu merasa segala sesuatu berjalan sesuai keinginanmu?', 1],
+            ['Seberapa sering kamu merasa tidak sanggup menyelesaikan semua hal yang harus dikerjakan?', 0],
+            ['Seberapa sering kamu mampu mengendalikan rasa kesalmu?', 1],
+            ['Seberapa sering kamu merasa berada di atas segala urusan?', 1],
+            ['Seberapa sering kamu merasa marah karena hal-hal di luar kendalimu?', 0],
+            ['Seberapa sering kamu merasa masalah menumpuk begitu tinggi sampai tak bisa diatasi?', 0],
         ];
         foreach ($item as $n => [$teks, $balik]) {
             Question::updateOrCreate(

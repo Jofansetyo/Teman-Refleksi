@@ -18,7 +18,7 @@
         <template x-for="item in [q]" :key="item.id">
             <div class="qwrap">
                 <p class="ql">Dalam sebulan terakhir</p>
-                <h2 x-text="'Seberapa sering kamu merasa ' + item.teks + '?'"></h2>
+                <h2 x-text="item.teks"></h2>
                 <template x-for="(label, n) in opsi" :key="n">
                     <button type="button" class="opt" x-text="label" @click="pilih(n)" :disabled="memproses"></button>
                 </template>

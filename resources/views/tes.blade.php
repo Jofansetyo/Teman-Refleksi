@@ -28,7 +28,11 @@
         {{-- Dikirim ke server setelah pertanyaan terakhir. Skor dihitung di server. --}}
         <form x-ref="form" method="POST" action="{{ route('tes.simpan') }}">
             @csrf
-            <input type="hidden" name="consent" value="1">
+            <input type="hidden" name="consent_token" value="{{ session('tes_consent_token') }}">
+            <div class="trap" aria-hidden="true">
+                <label for="website">Website</label>
+                <input id="website" type="text" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <template x-for="(nilai, id) in jawaban" :key="id">
                 <input type="hidden" :name="`jawaban[${id}]`" :value="nilai">
             </template>

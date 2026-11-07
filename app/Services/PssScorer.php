@@ -6,11 +6,12 @@ use Illuminate\Support\Collection;
 
 class PssScorer
 {
-    /** Skor PSS-10 (0-40). Item bertanda dibalik dihitung 4 - nilai. */
+    /** Skor refleksi stres (0-40). Item bertanda dibalik dihitung 4 - nilai. */
     public static function skor(Collection $pertanyaan, array $jawaban): int
     {
         return (int) $pertanyaan->sum(function ($q) use ($jawaban) {
             $n = (int) $jawaban[$q->id];
+
             return $q->dibalik ? 4 - $n : $n;
         });
     }
@@ -28,6 +29,7 @@ class PssScorer
                 'pesan' => 'Kamu sedang merasakan tekanan yang cukup terasa. Ini wajar dan bisa dikelola dengan beberapa penyesuaian.',
                 'tips' => ['Pecah pekerjaan besar jadi bagian kecil.', 'Coba jalan kaki 15 menit atau tarik napas dalam beberapa kali.', 'Ceritakan isi pikiranmu ke satu orang yang kamu percaya.']];
         }
+
         return ['kunci' => 'tinggi', 'label' => 'Tinggi', 'bg' => '#C24A33', 'fg' => '#ffffff',
             'pesan' => 'Tekananmu terasa berat. Kamu tidak perlu menghadapinya sendirian.',
             'tips' => ['Bicaralah dengan orang terdekat hari ini.', 'Pertimbangkan konseling kampus atau psikolog.', 'Istirahat sejenak, satu langkah kecil sudah cukup.']];

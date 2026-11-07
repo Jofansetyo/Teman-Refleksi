@@ -20,10 +20,12 @@ class TesController extends Controller
 
     public function tes(Request $request)
     {
-        // Persetujuan datang dari kotak centang di Beranda.
+        // The session marker prevents a direct form post from bypassing the consent screen.
         if (! $request->boolean('consent')) {
             return redirect()->route('beranda');
         }
+
+        $request->session()->put('tes_consent_token', Str::random(40));
         $questions = Question::pss()->get(['id', 'teks']);
 
         if ($questions->isEmpty()) {
@@ -36,10 +38,17 @@ class TesController extends Controller
     public function simpan(Request $request)
     {
         $request->validate([
-            'consent' => ['accepted'],
+            'consent_token' => ['required', 'string'],
+            'website' => ['nullable', 'max:0'],
             'jawaban' => ['required', 'array'],
             'jawaban.*' => ['integer', 'between:0,4'],
         ]);
+
+        if (! hash_equals((string) $request->session()->pull('tes_consent_token'), $request->string('consent_token')->toString())) {
+            throw ValidationException::withMessages([
+                'consent_token' => 'Persetujuan sudah kedaluwarsa. Silakan mulai tes kembali.',
+            ]);
+        }
 
         $pertanyaan = Question::pss()->get();
         $jawaban = $request->input('jawaban');
@@ -67,6 +76,7 @@ class TesController extends Controller
             foreach ($pertanyaan as $q) {
                 Answer::create(['submission_id' => $s->id, 'question_id' => $q->id, 'nilai' => (int) $jawaban[$q->id]]);
             }
+
             return $s;
         });
 
@@ -76,6 +86,7 @@ class TesController extends Controller
     public function hasil(Submission $submission)
     {
         $info = PssScorer::kategori($submission->skor);
+
         return view('hasil', ['skor' => $submission->skor, 'info' => $info]);
     }
 }

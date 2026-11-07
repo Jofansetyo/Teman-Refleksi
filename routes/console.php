@@ -1,7 +1,13 @@
 <?php
 
+use App\Models\Submission;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
+
+Schedule::call(function (): void {
+    Submission::query()->where('created_at', '<', now()->subDays(30))->delete();
+})->daily()->name('delete-expired-reflections')->withoutOverlapping();
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());

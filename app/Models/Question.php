@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     protected $fillable = ['kode', 'teks', 'tipe', 'dibalik', 'urutan', 'aktif'];
+
     protected $casts = ['dibalik' => 'boolean', 'aktif' => 'boolean'];
 
     public function scopePss($q)

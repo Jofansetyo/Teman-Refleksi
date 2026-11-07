@@ -18,7 +18,7 @@
     </div>
     <div class="sea">
         <form class="box" method="GET" action="{{ route('tes') }}" x-data="{ ok: false }">
-            <p>Hasilnya untuk berefleksi, bukan mendiagnosis. Tidak perlu nama, NIM, atau nomor HP.</p>
+            <p>Hasilnya untuk berefleksi, bukan mendiagnosis. Ini bukan instrumen PSS-10 tervalidasi dan tidak perlu nama, NIM, atau nomor HP.</p>
             <div class="note">Ini alat refleksi diri, bukan pengganti psikolog atau psikiater.
                 <label>
                     <input type="checkbox" name="consent" value="1" x-model="ok">

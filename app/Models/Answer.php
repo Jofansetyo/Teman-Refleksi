@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     public $timestamps = false;
+
     protected $fillable = ['submission_id', 'question_id', 'nilai'];
 }

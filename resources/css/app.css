@@ -6,6 +6,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Outfit",system-ui,sans-serif;line-height:1.55}
 [x-cloak]{display:none!important}
+.trap{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 button{font:inherit;cursor:pointer}
 button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .view{min-height:100vh;min-height:100svh}

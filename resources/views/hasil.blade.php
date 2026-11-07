@@ -23,7 +23,7 @@
 
         <p class="fine rise" style="animation-delay:1.1s">
             Butuh bicara dengan seseorang? Hubungi konseling kampus atau layanan kesehatan jiwa Kemenkes di 119 ekstensi 8.
-            Skor dihitung dengan PSS-10 dan bukan diagnosis medis.
+            Skor ini adalah indikator refleksi stres dan bukan diagnosis medis atau skor PSS-10 tervalidasi.
         </p>
         <a class="out" href="{{ route('beranda') }}">Ulangi</a>
     </div>

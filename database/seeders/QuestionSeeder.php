@@ -9,7 +9,7 @@ class QuestionSeeder extends Seeder
 {
     public function run(): void
     {
-        // Parafrase sendiri. Untuk penelitian resmi, pakai versi Indonesia PSS-10 yang tervalidasi.
+        // Pertanyaan refleksi, bukan adaptasi atau instrumen PSS-10 tervalidasi.
         $item = [
             ['kesal karena sesuatu yang terjadi tak terduga', 0],
             ['tidak bisa mengendalikan hal-hal penting dalam hidupmu', 0],

@@ -1,0 +1,72 @@
+/* Teman Refleksi: tema laut, pantai, langit. Font: Outfit. */
+:root{--sky:#CFE9F6;--sea:#0B5F82;--sea2:#7FC3DE;--ink:#0A2E40;--mute:#3D6275;--card:#fff;--line:#A9CFE0;--acc:#0B5F82;--accink:#fff;--sun:#F6C85F;--cloud:#fff;--bg:#EAF6FB;--onsea:#EAF6FB;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#14344F;--sea:#0A2236;--sea2:#1E5A7C;--ink:#E6F2F8;--mute:#A9C7D6;--card:#10283B;--line:#27506B;--acc:#5DBBDD;--accink:#07202F;--sun:#E7EEF7;--cloud:#2A4C66;--bg:#0D1F2E;--onsea:#E6F2F8}}
+:root[data-theme="dark"]{--sky:#14344F;--sea:#0A2236;--sea2:#1E5A7C;--ink:#E6F2F8;--mute:#A9C7D6;--card:#10283B;--line:#27506B;--acc:#5DBBDD;--accink:#07202F;--sun:#E7EEF7;--cloud:#2A4C66;--bg:#0D1F2E;--onsea:#E6F2F8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Outfit",system-ui,sans-serif;line-height:1.55}
+[x-cloak]{display:none!important}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.view{min-height:100vh;min-height:100svh}
+/* Beranda */
+.home{display:flex;flex-direction:column;background:var(--sea)}
+.sky{position:relative;background:var(--sky);padding:20px 24px 150px;overflow:hidden}
+.sky>*{position:relative;z-index:1}
+.brand{font-weight:600;text-align:center;font-size:17px}
+.hero{max-width:560px;margin:56px auto 0}
+.tag{font-size:13px;font-weight:500;letter-spacing:.06em;color:var(--acc);margin:0 0 10px}
+h1{font-size:clamp(34px,8vw,56px);line-height:1.1;font-weight:600;margin:0 0 14px}
+.lead{font-size:17px;color:var(--mute);margin:0;max-width:440px}
+.sun{position:absolute!important;z-index:0!important;right:9%;top:70px;width:clamp(70px,16vw,150px);aspect-ratio:1;border-radius:50%;background:var(--sun);animation:rise 2.6s ease-out both}
+.cloud{position:absolute!important;z-index:0!important;height:22px;width:90px;border-radius:20px;background:var(--cloud);opacity:.85}
+.cloud::before{content:"";position:absolute;left:18px;top:-12px;width:44px;height:30px;border-radius:50%;background:inherit}
+.c1{top:60px;animation:fly 55s linear infinite}
+.c2{top:150px;width:70px;animation:fly 80s linear infinite;animation-delay:-30s}
+.waves{position:absolute;left:0;right:0;bottom:-1px;height:100px;overflow:hidden;z-index:1}
+.w{position:absolute;bottom:0;left:0;width:200%;height:100%}
+.w1{animation:drift 18s linear infinite}
+.w2{animation:drift 11s linear infinite}
+.boat{position:absolute;z-index:2;left:56%;bottom:62px;width:84px;height:84px;animation:bob 4.2s ease-in-out infinite alternate;transform-origin:50% 90%}
+.sea{flex:1;padding:8px 24px 40px;color:var(--onsea)}
+.box{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.box p{margin:0;font-size:16px}
+.note{background:#F6ECD2;color:#0A2E40;border-radius:14px;padding:16px;font-size:14px;line-height:1.55}
+.note label{display:flex;gap:10px;margin-top:8px;align-items:flex-start}
+.note input{width:20px;height:20px;margin:0;flex:none}
+.go{height:54px;border:0;border-radius:27px;background:#F3D58B;color:#0A2E40;font-size:17px;font-weight:600;width:100%}
+.go:disabled{opacity:.5;cursor:not-allowed}
+/* Tes */
+.band{height:22px;background:var(--sky)}
+.wrap{max-width:560px;margin:0 auto;padding:0 24px 40px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-size:14px;color:var(--mute)}
+.link{background:none;border:0;color:var(--mute);font-size:15px;padding:8px 0}
+.track{position:relative;height:56px;margin:4px 0 22px}
+.line{position:absolute;left:0;right:0;bottom:10px;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.line i{display:block;height:100%;background:var(--acc);transition:width .7s ease}
+.sail{position:absolute;bottom:8px;width:44px;height:44px;transition:left .7s ease;animation:bob 3.4s ease-in-out infinite alternate;transform-origin:50% 90%}
+.isl{position:absolute;right:0;bottom:-14px;font-size:12px;font-weight:600;color:var(--acc)}
+.qwrap{animation:in .45s ease both}
+.ql{font-size:14px;color:var(--mute);margin:0 0 6px}
+h2{font-size:24px;line-height:1.35;font-weight:500;margin:0 0 20px}
+.opt{display:block;width:100%;text-align:left;min-height:52px;padding:12px 16px;margin-bottom:10px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:16px;transition:transform .15s,border-color .15s}
+.opt:hover:not(:disabled){border-color:var(--acc);transform:translateX(4px)}
+.opt:disabled{cursor:wait;opacity:.7}
+/* Hasil */
+.score{font-size:64px;font-weight:600;line-height:1}
+.pill{display:inline-block;margin-left:10px;padding:4px 16px;border-radius:20px;font-weight:500;vertical-align:middle}
+.gauge{position:relative;height:14px;border-radius:7px;margin:28px 0 8px;background:linear-gradient(90deg,#2A9D8F 0 33%,#E8B04B 33% 66%,#C24A33 66% 100%)}
+.gauge b{position:absolute;top:-7px;width:6px;height:28px;border-radius:3px;background:var(--ink);transform:translateX(-50%);transition:left 1.4s cubic-bezier(.2,.8,.2,1)}
+.sc{display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:14px}
+.card ul{margin:6px 0 0;padding-left:20px}
+.card li{margin-bottom:6px}
+.rise{animation:in .6s ease both}
+.out{display:block;text-align:center;text-decoration:none;line-height:50px;border:1px solid var(--acc);color:var(--acc);height:52px;border-radius:26px;font-size:16px;font-weight:500}
+.fine{font-size:13px;color:var(--mute);margin:14px 0}
+@keyframes drift{to{transform:translateX(-50%)}}
+@keyframes bob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-7px) rotate(3deg)}}
+@keyframes fly{from{left:-120px}to{left:105%}}
+@keyframes rise{from{transform:translateY(70px);opacity:0}to{transform:none;opacity:1}}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
